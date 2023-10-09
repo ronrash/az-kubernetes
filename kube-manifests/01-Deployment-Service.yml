@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:
+  labels:
+    app: app-demo-1-nginx #name of 
+spec:
+ replicas:1
+ selector:
+  matchLabels:
+   app: app-demo-1-nginx # name of the pods for which it will create the replicas
+ template: # definition of a pod 
+  metadata:
+   matchLabels:
+    app: app-demo-1-nginx # name of the pod
+  spec:
+   containers:
+    - name: app-demo-nginx
+      image: azrondevops.azurecr.io/custom2aksnginxapp1 # name of the container registry
+      ports: 
+      - containerPort: 80 # the container will run on this port
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-demo-1-nginx
+  ports:
+  - name: MYAPP
+    port: 80 
+    targetPort: 80
