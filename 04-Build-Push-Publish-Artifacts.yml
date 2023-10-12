@@ -11,6 +11,10 @@
 
 trigger:
 - main
+#variables
+variables:
+  tag: '$(Build.BuildId)'
+ 
 
 stages:
   - stage: Build
@@ -28,6 +32,9 @@ stages:
             repository: 'app1/nginx-manual'
             command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
+            tags: |
+              $(tag)
+              $(Build.SourceVersion)
         # Task-2: Copy kube-manifest files to Build Artifact Directory 
         # Source Directory: $(System.DefaultWorkingDirectory)/kube-manifests
         # Target Directory: $(Build.ArtifactStagingDirectory)
