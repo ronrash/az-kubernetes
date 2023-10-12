@@ -54,5 +54,5 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'kube-maifest-files'
+        ArtifactName: 'kube-manifest-files'
         publishLocation: 'Container'
