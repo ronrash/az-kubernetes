@@ -16,7 +16,7 @@ spec:
   spec:
    containers:
     - name: app-demo-nginx
-      image: azrondevops.azurecr.io/custom2aksnginxapp1 # name of the container registry
+      image: azrondevops.azurecr.io/app1/nginx-manual # name of the container registry
       ports: 
       - containerPort: 80 # the container will run on this port
 
